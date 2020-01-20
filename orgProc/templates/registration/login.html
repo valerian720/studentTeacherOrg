@@ -1,0 +1,89 @@
+<head>
+<style>
+    {% load static %}
+    @import url('{% static "api/comfortaa.css" %}');
+
+    body{font-family: Comfortaa; padding:0px;}
+#page{
+    display: grid;
+    grid-template-rows: 92% auto;
+    height: 100%;
+}
+#footer{
+    background-color: black;
+    color:gray;
+    text-align: center;
+    vertical-align: center;
+    padding: 10px;
+    margin:0;
+}
+a{color: white;}
+h1{
+    text-align: center;
+    margin: 100px 10px;
+}
+button{
+    color: white;
+    background: rgba(22, 155, 213, 1);
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer;
+    outline: none;
+    height: 2em;
+    margin: 10px 33% ;
+    width: 100px;
+}
+form{
+    border: 1px solid gray;
+    width: 400px;
+    margin: auto;
+    padding: 1em;
+    -webkit-box-shadow: 0 0 200px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 200px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
+    align-content: center;
+}
+
+ul{
+  list-style-type: none;
+  margin: 0 2em;
+  padding: 0;
+}
+form p{
+position: relative;
+}
+
+p input{
+position: absolute;
+    right: 0;
+    margin: auto;
+}
+</style>
+</head>
+<body>
+    
+    <div id="page">
+        <div id="main">
+            <h1>Система помощи организации образовательного процесса</h1>
+            <form method="post">
+                {% csrf_token %}
+                    {{ form.as_p }}
+                <button type="submit">войти</button>
+            </form>
+
+            <p>шорткаты (TODO убрать)</p>
+            <p>студент</p>
+            <p>georgii@gmail.com</p>
+            <p>препод</p>
+            <p>ivan@gmail.com</p>
+
+        </div>
+
+        <div id="footer">
+            <div>если у вас нет доступа к данному сервису, пожалуйста обратитесь по адресу 
+            <a href="mailto:ist@fit.mospolytech.ru">ist@fit.mospolytech.ru</a>
+            для получения логина и пароля</div>
+        </div>
+
+    </div>
+
+</body>

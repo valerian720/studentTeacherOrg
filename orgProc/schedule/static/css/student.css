@@ -1,0 +1,61 @@
+.subjRow, .curSubjInfo,.lessonClass,.planDescription,
+.hvStorage, .stuffStorage, .addHw, .addSuff{
+    display: grid;
+    border: 1px solid black;  
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+.add{
+    width: 3em;
+}
+.hvStorage, .stuffStorage, .addHw, .addSuff{
+    padding: 7px;
+    }
+
+.subjItem{
+    border: 1px solid black;
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    cursor: pointer;
+}
+.selectedItem{
+    border-color: rgba(22, 155, 213, 1);
+    /* border-right: rgba(22, 155, 213, 1) solid 3px; */
+    box-shadow: 0 0 10px rgba(22, 155, 213,0.4);
+}
+
+.name{
+    text-align: center;
+    padding: 1em;
+}
+/* === */
+.header {
+    grid-template-columns: auto 64px;
+}
+.subjRow{
+    grid-template-columns: 100px 40% auto;
+}
+
+.curSubjectDescr{
+    grid-template-columns: auto auto;
+}
+.curSubjInfo{
+    grid-template-rows: auto auto auto auto;
+}
+
+.lessonClass{
+    grid-template-columns: auto 42%;
+}
+.planDescription{
+    grid-template-columns: 30% auto;
+}
+.events{
+    display: grid;
+    grid-template-columns: 50% auto;
+}
+.addSuff input, .addHw input{
+    width: 80%;
+    margin-left: 2em;
+}
+.hvStorage:nth-child(1n+0), .stuffStorage:nth-child(1n+0) {
+    font-size: small;
+    text-align: right;
+}

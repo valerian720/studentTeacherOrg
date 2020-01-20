@@ -1,0 +1,23 @@
+C:\Users\a.n.shushpannikov\Desktop
+
+pip install Django
+	-установка джанго через пип
+	
+django-admin startproject *им€ проекта*
+	-создание проекта
+	
+python manage.py startapp *им€ приложен€*
+	-создание приложени€
+
+python manage.py runserver *0:8080*
+	-запуск сервера джанго (локально)
+
+ћиграци€ данных:[
+1.
+	python manage.py makemigrations schedule <приложение>
+2.	
+	python manage.py migrate
+
+http://127.0.0.1:8000/admin/
+	-админка
+

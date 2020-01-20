@@ -1,0 +1,173 @@
+{% load static %}
+<head>
+    <meta charset="utf-8">
+    <title>личный кабинет</title>
+    <link rel="stylesheet" href="{% static 'css/general.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/teacher.css' %}"/>
+    <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+    <script src="{% static 'js/teacher.js' %}"></script>
+</head>
+
+<body>
+
+     <div class="header">
+         <script>
+        $.ajaxSetup({
+            data: {csrfmiddlewaretoken: '{{ csrf_token }}' },
+          });
+          ccrf = '{{ csrf_token }}';
+        </script>
+        <div class="name">
+            {{pac.name}}
+        </div>
+        <div>
+            <!-- выход -->
+            <a href="/logout"><img src="{% static 'pic/exit.png' %}" alt="выход" width="32" height="32"></a>
+        </div>
+     </div>
+
+     <h3>предмет</h3>
+     <div class="subjects">
+        <!-- шаблонирование -->
+
+        {% for subject in pac.subjects.values %}
+        <div class="subjRow">
+            <div>
+                <button onclick="selectSubject('{{subject.id}}')">открыть</button>
+            </div>
+            <div>
+                {{subject.name}}
+            </div>
+            <div class="subjInfo">
+                <div>
+                    {{subject.planName}}
+                </div>
+                <div class="subjMeta">
+                    <div>{{subject.year}} год</div>
+                    <div>{{subject.semestr}} семестр</div>
+                    <div>{{subject.group}}</div>
+                </div>
+            </div>
+        </div>
+         {% endfor %}
+        <!--  -->
+     </div>
+
+     <!-- детальная карточка предмета, подгружается через django -->
+     <h3 class="selSubj hiden" id="descr">название выбранного предмета <button class="close" onclick="closePlan()">X</button></h3>
+     <div class="curSubjectDescr dispGrid selSubj hiden">
+         <div class="curSubjInfo">
+             <!-- <div class="wdh100"> -->
+                 <button onclick="openSubjPlan()">открыть/изменить план обучения</button>
+            <!-- </div> -->
+            <div id="subPassed">прошло занятий: 7</div>
+            <div id="subRemain">всего: 15</div>
+            <!-- <div><button>экспартировать/импортировать план обучения</button></div> -->
+         </div>
+         <div class="curSubjNearest">
+            <div class="rowLessonFirst">
+                <div id="nearTheme">тема ближайшего занятия <div id="nearDate">30.11.2019</div></div>
+                <div class="lessonClass">
+                    <div id="nearDescr">
+                        полное описание предстаящего урока которое включает в
+                        себя в районе 30 слов различной длины, но скорее всего
+                        не стоит сюда впихивать орфографический движок, который можно
+                        оставить на следующие релизы
+                    </div>
+                    <div id="nearType">
+                        тип: практическое занятие 
+                    </div>
+                    <div class="materials" id="nearHw">
+                        домашние задания<br>
+                        <button>Пилы и их разновидности</button><br>найти и составить диаграмму по приложенному шаблону
+                    </div>
+                    <div class="materials" id="nearStuff">
+                        материаллы к занятию<br>
+                            -
+                    </div>
+                </div>
+            </div>
+            <div class="rowLessonSecond">
+                    <div id="nextTheme">тема следующего занятия занятия <div id="nextDate">3.12.2019</div></div>
+                    <div class="lessonClass">
+                        <div id="nextDescr">
+                            полное описание предстаящего урока которое включает в
+                            себя в районе 30 слов различной длины, но скорее всего
+                            не стоит сюда впихивать орфографический движок, который можно
+                            оставить на следующие релизы
+                        </div>
+                        <div id="nextType">
+                            тип: практическое занятие 
+                        </div>
+                        <div class="materials" id="nextHw">
+                            домашние задания<br>
+                            <button>Пилы и их разновидности</button><br>найти и составить диаграмму по приложенному шаблону
+                        </div>
+                        <div class="materials" id="nextStuff">
+                            материаллы к занятию<br>
+                                -
+                        </div>
+                    </div>
+            </div>
+         </div>
+     </div>
+
+
+     <!-- карточка плана обучения предмету, наполненная контентом через шаблоны -->
+     <div class="subjPlan hiden" id="plan">
+        <div><h3 id="planTitle"> план обучения: название предмета <button class="close" onclick="closeSubj()">X</button></h3></div>
+        <div class="planDescription">
+            <div class="planLeftCol">
+                <!-- заполнение через шаблон -->
+                <div class="subjItem">
+                    занятие 1
+                    <div>наименование темы занятия 1</div>
+                </div>
+                    <!--  -->
+                <div class="subjItem">
+                    занятие 2
+                    <div>наименование темы занятия 2</div>
+                </div>
+                <!--  -->
+                <div class="subjItem selectedItem">
+                    занятие 3
+                    <div>наименование темы занятия 3</div>
+                </div>
+                <!--  -->
+            </div>
+            <div class="planRightCol">
+                занятие 3: <input id="inpName" type="text" value="наименование темы занятия 3"> <br>
+                текст <br>
+                <textarea name="" id="inpDescr" cols="30" rows="10">полное описание предстаящего урока которое включает в себя в районе 30 слов различной длины, но скорее всего не стоит сюда впихивать орфографический движок, который можно оставить на следующие релизы</textarea> <br>
+                
+                <div class="events">
+                    <div class="hvStorage">
+                        <div><button>домашнее задание 1</button><br>описание дз<button class="close" onclick="">-</button></div>
+                        <!--  -->
+                        <div><button>домашнее задание 1</button><br>описание дз<button class="close" onclick="">-</button></div>
+                        <!--  -->
+                    </div>
+                    <div class="stuffStorage">
+                        <div><button>домашнее задание 1</button><br>описание дз<button class="close" onclick="">-</button></div>
+                        <!--  -->
+                        <div><button>домашнее задание 1</button><br>описание дз<button class="close" onclick="">-</button></div>
+                        <!--  -->
+                    </div>
+                    <!-- add -->
+                    <div class="addHw">
+                            название домашней работы<input type="text" name="" id="addHwName"><br>
+                            описание <input type="text" name="" id="addHwDescr"><br>
+                            <input type="file" name="" id="addHwFile"> <button class="close" onclick="addHw()">+</button>
+                    </div>
+                    <div class="addSuff">
+                            название дополнительного материалла<input type="text" name="" id="addSuffName"><br>
+                            описание <input type="text" name="" id="addSuffDescr"><br>
+                            <input type="file" name="" id="addSuffFile"> <button class="close" onclick="addStuff()">+</button>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+     </div>
+</body>

@@ -1,0 +1,73 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+div {
+    /* border: 1px solid black; */
+    margin: 5px;
+    border-radius: 5px;
+}
+
+body{
+    max-width: 800px;
+    margin: 0px auto;
+}
+
+.header, .dispGrid{
+    display: grid;
+}
+
+
+button{
+    color: white;
+    background: rgba(22, 155, 213, 1);
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer;
+    outline: none;
+    height: 3em;
+    margin: 10px;
+    padding: 5px;
+    box-shadow: 0 0 10px rgba(22, 155, 213,0.4);
+    width: 90%;
+    }
+    button:disabled,
+    button[disabled]{
+      border: 1px solid #999999;
+      background-color: #cccccc;
+      color: #666666;
+      cursor: not-allowed;
+      box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    }
+
+input{
+    border-radius: 5px;
+    border: none;
+    border-bottom:1px solid lightslategrey;
+    width: 100%;
+}
+
+textarea, select, option{  
+    border-radius: 5px;
+    padding: 1em;
+}
+textarea{
+    width: 100%;
+    resize: vertical;
+    min-height: 4em;
+    max-height: 30em;
+}
+/*  */
+
+.hiden{
+    display: none;
+}
+.close{
+    width: 3em;
+}
+input[type="file"]{
+    width: 95%;
+    border: none;
+}
